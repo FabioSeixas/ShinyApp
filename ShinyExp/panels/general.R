@@ -2,16 +2,17 @@
 general_plot = function(x){
   
   x %>%
-    filter(cycle_w > 32 & cycle_w < 52) %>%
-    ggplot(aes(PDate_norm, HWAM, group = PDate_norm)) +
+    filter(DAP %in% c(240, 270, 300, 330, 360)) %>%
+    group_by(PDate_norm) %>%
+    select(DAP, HWAD) %>%
+    ggplot(aes(PDate_norm, HWAD, group = PDate_norm)) +
     geom_boxplot(outlier.shape = NA) +
-    geom_jitter(alpha = 0.1) +
-    facet_wrap(~cycle_m, ncol = 1,
-               labeller = labeller(cycle_m = c("8" = "8 Months",
-                                               "9" = "9 Months",
-                                               "10" = "10 Months",
-                                               "11" = "11 Months",
-                                               "12" = "12 Months"))) +
+    facet_wrap(~DAP, ncol = 1,
+               labeller = labeller(DAP = c("240" = "8 Months",
+                                           "270" = "9 Months",
+                                           "300" = "10 Months",
+                                           "330" = "11 Months",
+                                           "360" = "12 Months"))) +
     scale_x_date(labels = function(x) month(x, label = T, 
                                             locale = "US"),
                  name = "Planting Date") +
@@ -24,56 +25,49 @@ general_plot = function(x){
 }
 
 
-above_5000 = function(x){
-  
-  final = c()
-  
-  for(i in (1:length(x))){
-    
-    if(x[i] > 5000){
-      final = c(final, i)
-    }
-  }
-  return((length(final) / length(x)) * 100)
-}
 
-
-above_7500 = function(x){
-  
-  final = c()
-  
-  for(i in (1:length(x))){
-    
-    if(x[i] > 7500){
-      final = c(final, i)
-    }
-  }
-  return((length(final) / length(x)) * 100)
-}
-
-above_10000 = function(x){
-  
-  final = c()
-  
-  for(i in (1:length(x))){
-    
-    if(x[i] > 10000){
-      final = c(final, i)
-    }
-  }
-  return((length(final) / length(x)) * 100)
-}
-
-probabilities_table = function(x){
+prob_plot = function(x, Pmonth){
   
   x %>%
-    filter(cycle_w > 32 & cycle_w < 52) %>%
-    filter(cycle_m %in% c(8, 12)) %>%
-    group_by(Month = month(PDate_norm,
-                           label = T),
-             "Cycle Length" = cycle_m) %>%
-    summarise("Above 5t/ha (%)" = above_5000(HWAM),
-              "Above 7.5t/ha (%)" = above_7500(HWAM),
-              "Above 10t/ha (%)" = above_10000(HWAM))
+    filter(DAP %in% c(240, 270, 300, 330, 360),
+           lubridate::month(PDate_norm,
+                            label = T) %in% Pmonth) %>%
+    mutate(PMonth = lubridate::month(PDate_norm, label = T)) %>%
+    ggplot(aes(HWAD, fill = PMonth)) +
+    geom_density(color = "black") +
+    facet_wrap(~DAP, ncol = 1,
+               labeller = labeller(DAP = c("240" = "8 Months",
+                                           "270" = "9 Months",
+                                           "300" = "10 Months",
+                                           "330" = "11 Months",
+                                           "360" = "12 Months"))) +
+    labs(y = "",
+         x = "Dry Matter Yield (kg/ha)") +
+    scale_x_continuous(labels = scales::comma,
+                       breaks = seq(0, 30500, by = 2000)) +
+    scale_fill_manual(name = "Month",
+                      values = RColorBrewer::brewer.pal(name = "Set1", 
+                                                        n = length(Pmonth))) +
+    theme_bw() +
+    theme(axis.text.y = element_blank())
+}
+
+
+prob_table = function(x, Pmonth){
+  
+  x %>%
+    filter(DAP %in% c(240, 270, 300, 330, 360),
+           lubridate::month(PDate_norm,
+                            label = T) %in% Pmonth) %>%
+    group_by(PMonth = lubridate::month(PDate_norm, label = T)) %>%
+    summarise("0%" = quantile(HWAD)[1],
+              "25%" = quantile(HWAD)[2],
+              "50%" = quantile(HWAD)[3],
+              "75%" = quantile(HWAD)[4],
+              "100%" = quantile(HWAD)[5]) %>%
+    pivot_longer(cols = -c(PMonth)) %>%
+    pivot_wider(id_cols = c(name, PMonth),
+                names_from = PMonth) %>%
+    rename("Quantile" = name)
   
 }
