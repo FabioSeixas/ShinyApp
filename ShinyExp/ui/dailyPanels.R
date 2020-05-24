@@ -1,0 +1,2 @@
+
+dailyGeneral = tabPanel("General", )
