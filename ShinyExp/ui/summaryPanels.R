@@ -19,14 +19,13 @@ sumGeneral = tabPanel("General",
                                div(
                                  selectInput("sum_prob_month",
                                              "Select Planting Month",
-                                             lubridate::month(1:12, label = T),
+                                             str_to_title(lubridate::month(1:12,
+                                                                           label = T)),
                                              multiple = T),
                                  p("Quantiles taken from all cycles lengths"),
                                  tableOutput(outputId = "prob_table")))))
 
-sumGermination = tabPanel("Germination", 
-                          
-                          titlePanel("Germination Summary"),
+sumGermination = tabPanel("Germination",
                           
                           br(),
                           
@@ -66,29 +65,26 @@ sumGermination = tabPanel("Germination",
 
 sumPrecipitation = tabPanel("Precipitation",
                             
-                            titlePanel("Precipitation information"),
-                            
                             br(),
                             
-                            div(
-                              
-                              h4("Yield x Precipitation"),
-                              
-                              plotOutput(outputId = "plot3")
-                              
-                            ),
-                            
-                            br(),
-                            
-                            div(
-                              
-                              h4("By Planting Date"),
-                              
-                              plotOutput("plot4")))
+                            fluidRow(
+                              column(6,
+                                     div(
+                                       
+                                       h4("Yield x Precipitation"),
+                                       
+                                       plotOutput(outputId = "plot3")
+                                       
+                                     )),
+                              column(6,
+                                     div(
+                                       
+                                       h4("By Planting Date"),
+                                       
+                                       plotOutput("plot4")))),
+                            br())
 
 sumIrrigation = tabPanel("Irrigation",
-                         
-                         titlePanel("Irrigation Information"),
                          
                          br(),
                          

@@ -25,24 +25,13 @@ new_column = function(x){
     group_by(TRAT, RUN) %>%
     filter(DAP == 0) %>%
     select(DATE) %>%
-    mutate(PDate_norm = map(DATE, make_norm_date)) %>%
+    mutate(PDate_norm = map(DATE, make_norm_date),
+           Pyear = lubridate::year(DATE)) %>%
     unnest(cols = PDate_norm) %>%
-    select(PDate_norm) %>%
+    select(PDate_norm, Pyear) %>%
     left_join(x, by = c("TRAT", "RUN"))
   
 }
-
-# new_columns = function(df){
-#   
-#   df %>%
-#     mutate(PDOY = yday(PDAT),
-#            HDOY = yday(HDAT),
-#            cycle_w = difftime(HDAT, PDAT, units = "weeks"),
-#            cycle_m = floor(as.integer(cycle_w) / 4),
-#            PDate_norm = as.Date('2020-01-01') + (PDOY - 1) + 1) -> df
-#   
-#   return(df)
-# }
 
 
 useful_treatments = function(df){

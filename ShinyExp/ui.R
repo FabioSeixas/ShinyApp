@@ -33,6 +33,6 @@ ui <- fluidPage(
                              sumIrrigation)),
                 tabPanel("Daily Results",
                          tabsetPanel(
-                             dailyGeneral))
-                ))))
+                             dailyGeneral,
+                             dailyYield))))))
 

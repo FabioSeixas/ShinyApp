@@ -1,4 +1,4 @@
-source("panels/import.R")$value
+source("server/implementation/germination.R")$value
 
 
 # ======= Reactives ============= #
