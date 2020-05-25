@@ -6,19 +6,19 @@ Under development. See below some app screenshots.
 -------------------------------------------
 
 <h1 align="center">
-    <img src="github/imagem1.jpg" width="600px"/>
+    <img src="github/Imagem1.jpg" width="600px"/>
 </h1>
 
 
 <h1 align="center">
-    <img src="github/imagem2.jpg" width="600px"/>
+    <img src="github/Imagem2.jpg" width="600px"/>
 </h1>
 
 
 <h1 align="center">
-    <img src="github/imagem3.jpg" width="400px"/>
+    <img src="github/Imagem3.jpg" width="400px"/>
 </h1>
 
 <h1 align="center">
-    <img src="github/imagem4.jpg" width="400px"/>
+    <img src="github/Imagem4.jpg" width="400px"/>
 </h1>
