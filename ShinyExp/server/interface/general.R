@@ -1,6 +1,11 @@
 source("server/implementation/general.R")
 
 
+observeEvent(input$file, {
+  shinyjs::show("general_panel")
+  shinyjs::show("general_panel2")
+})
+
 output$general_plot = renderPlot({
   
   df() %>% 
@@ -25,6 +30,16 @@ prob_month = reactive({
   input$sum_prob_month
   
 })
+
+observeEvent(input$sum_prob_month, {
+  
+  if(is.null(input$sum_prob_month)){
+    shinyjs::hide("mainPlotContainer")
+  } else if (!is.null(input$sum_prob_month)){
+      shinyjs::show("mainPlotContainer")
+  }
+}, ignoreNULL = FALSE)
+  
 
 output$prob_plot = renderPlot({
   

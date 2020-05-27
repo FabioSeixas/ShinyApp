@@ -1,5 +1,17 @@
 source("server/implementation/yield.R")
 
+observeEvent(input$file, {
+  shinyjs::show("yield_panel")
+})
+
+observeEvent(input$yield_sel_year, {
+  if(!is.null(input$yield_sel_year)){
+    shinyjs::show("PlotsContainer")}
+  else if(is.null(input$yield_sel_year)){
+    shinyjs::hide("PlotsContainer")
+  }
+}, ignoreNULL = FALSE)
+
 yield_sel_year = reactive({
   
   req(input$yield_sel_year)

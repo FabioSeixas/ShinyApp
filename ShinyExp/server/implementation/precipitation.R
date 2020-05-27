@@ -6,7 +6,7 @@ yield_prec = function(x){
     filter(DAP == 0) %>%
     mutate(initPREC = PREC) %>%
     select(initPREC) %>%
-    right_join(new_x, by = c("TRAT", "RUN")) %>%
+    right_join(x, by = c("TRAT", "RUN")) %>%
     filter(DAP %in% c(240, 270, 300, 330, 360)) %>%
     mutate(PREC = PREC - initPREC) %>%
     ggplot(aes(PREC, HWAD, 
@@ -44,7 +44,7 @@ mean_cum_prec = function(x){
     filter(DAP == 0) %>%
     mutate(initPREC = PREC) %>%
     select(initPREC) %>%
-    right_join(new_x, by = c("TRAT", "RUN")) %>%
+    right_join(x, by = c("TRAT", "RUN")) %>%
     filter(DAP %in% c(240, 270, 300, 330, 360)) %>%
     mutate(PREC = PREC - initPREC) %>%
     group_by(Date = PDate_norm) %>%

@@ -3,6 +3,11 @@ source("server/implementation/germination.R")$value
 
 # ======= Reactives ============= #
 
+observeEvent(input$file, {
+  shinyjs::toggle("germ_panel")
+  shinyjs::toggle("germ_panel2")
+})
+
 df_germ = reactive({
   
   req(df())
