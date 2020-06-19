@@ -1,19 +1,20 @@
 
-
-sumGeneral = tabPanel("General", 
+sumGeneral = tabPanel("General",
                       br(),
                       hidden(
-                        fluidRow(id = "general_panel",
+                        fluidRow(id = "row-container",
                           column(6,
-                                 div(h4("Yield x Planting Date by cycle length"),
+                                 div(id = "result-container",
+                                     h4("Yield x Planting Date by cycle length"),
                                      img(src="ajax-loader.gif", id = "plotSpinner"),
                                      plotOutput(outputId = "general_plot"))),
                           column(6,
-                                 div(h4("Basic Statistics"),
+                                 div(id = "result-container",
+                                     h4("Basic Statistics"),
                                      tableOutput(outputId = "general_table")))),
                         br(),
                          
-                        fluidRow(id = "general_panel2",
+                        fluidRow(id = "row-container",
                                  br(),
                           column(6,
                                  br(),
@@ -24,7 +25,7 @@ sumGeneral = tabPanel("General",
                                        plotOutput(outputId = "prob_plot")))),
                           column(6,
                                  br(),
-                                 div(
+                                 div(id = "result-container",
                                    selectInput("sum_prob_month",
                                                "Select Planting Month",
                                                str_to_title(lubridate::month(1:12,
@@ -42,7 +43,7 @@ sumGermination = tabPanel("Germination",
                           hidden(
                             fluidRow(id = "germ_panel",
                                      column(6, div(
-                              
+                                       id = "result-container",
                               h4("Successful Germinations by Month"),
                               img(src="ajax-loader.gif", id = "plotSpinner"),
                               plotOutput(outputId = "germ_success_abs")
@@ -50,7 +51,7 @@ sumGermination = tabPanel("Germination",
                             )),
                             
                             column(6, div(
-                              
+                              id = "result-container",
                               h4("Successful Germinations by Month (%)"),
                               img(src="ajax-loader.gif", id = "plotSpinner"),
                               plotOutput(outputId = "germ_success_perc") 
@@ -61,7 +62,7 @@ sumGermination = tabPanel("Germination",
                             
                             fluidRow(id = "germ_panel2",
                                      column(6, div(
-                              
+                                       id = "result-container",
                               h4("Germinations Fails by Month"),
                               img(src="ajax-loader.gif", id = "plotSpinner"),
                               plotOutput(outputId = "germ_fails_abs")
@@ -69,7 +70,7 @@ sumGermination = tabPanel("Germination",
                             )),
                             
                             column(6, div(
-                              
+                              id = "result-container",
                               h4("Germinations Fails by Month (%)"),
                               img(src="ajax-loader.gif", id = "plotSpinner"),
                               plotOutput(outputId = "germ_fails_perc")
@@ -82,9 +83,9 @@ sumPrecipitation = tabPanel("Precipitation",
                             
                             hidden(
                               fluidRow(id = "prec_panel",
-                                column(6,
+                                column(6, 
                                        div(
-                                         
+                                         id = "result-container",
                                          h4("Yield x Precipitation"),
                                          img(src="ajax-loader.gif", id = "plotSpinner"),
                                          plotOutput(outputId = "plot3")
@@ -92,7 +93,7 @@ sumPrecipitation = tabPanel("Precipitation",
                                        )),
                                 column(6,
                                        div(
-                                         
+                                         id = "result-container",
                                          h4("By Planting Date"),
                                          img(src="ajax-loader.gif", id = "plotSpinner"),
                                          plotOutput("plot4")))),
@@ -101,9 +102,9 @@ sumPrecipitation = tabPanel("Precipitation",
 sumIrrigation = tabPanel("Irrigation",
                          
                          br(),
-                         hidden(
-                           div(id = "irrig_panel",
+                         #hidden(
+                           div(id = "result-container",
                                h4("Yield x Irrigation"),
                                img(src="ajax-loader.gif", id = "plotSpinner"),
                                plotOutput("plot5")
-                           )))
+                           ))

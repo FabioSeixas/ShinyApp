@@ -1,7 +1,7 @@
 source("server/implementation/irrigation.R")
 
 observeEvent(input$file, {
-  shinyjs::toggle("irrig_panel")
+  shinyjs::show("result-container")
 })
 
 output$plot5 = renderPlot({

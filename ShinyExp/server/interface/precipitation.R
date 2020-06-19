@@ -1,7 +1,7 @@
 source("server/implementation/precipitation.R")
 
 observeEvent(input$file, {
-  shinyjs::toggle("prec_panel")
+  shinyjs::show(selector = "div.row")
 })
 
 output$plot3 = renderPlot({

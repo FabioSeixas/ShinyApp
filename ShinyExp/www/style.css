@@ -1,0 +1,147 @@
+
+.well {
+  background-color: white;
+}
+
+#inputPanel .form-control {
+  background-color: white;  
+}
+
+#prob_table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#panel-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.col-sm-6 .form-group .shiny-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#panel-container .tab-content {
+  padding: 0 20px;
+  border: 1px solid #ccc;
+  margin-top: -1px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+
+h4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#result-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.PlotsContainer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.plot-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  height: 500px;
+  padding: 20px;
+}
+
+.img-container {
+  position: relative;
+}
+
+#plotSpinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -50px;
+  margin-left: -33px;
+  z-index: -1;
+}
+
+
+.navbar .navbar-nav>.active>a:hover:after {
+	width: 0px;
+	background: transparent;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:hover,
+.nav-tabs>li.active>a:focus {
+  border-top: 2px solid orange;
+  border-bottom: 0;
+  font-weight: bold;
+}
+
+
+#plotParamsTabs.nav-pills>li>a {
+  border-radius: 3px 3px 0 0; 
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  font-size: 1.2em;
+}
+
+
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>.active>a:focus {
+  border-top-color: #201a16; /* #0647d2; */
+  background: #fff;
+  color: #201a16;
+  cursor: default;
+  transition: background 0.3s;
+}
+
+#plotParamsTabs.nav>li>a {
+  padding: 5px 15px;
+} 
+
+#plotParamsTabs.nav-pills>li.active>a {
+  color: #222;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  border-top: 2px solid orange;
+  padding-bottom: 10;
+}
+
+#mainPlotContainer {
+  position: relative;
+}
+
+
+
+#prob_plot {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+#prob_plot.recalculating {
+  z-index: -2;
+}

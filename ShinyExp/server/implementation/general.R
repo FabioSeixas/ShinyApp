@@ -15,9 +15,11 @@ general_plot = function(x){
                                            "360" = "12 Months"))) +
     scale_x_date(labels = function(x) month(x, label = T, 
                                             locale = "US"),
+                 date_breaks = "1 month",
                  name = "Planting Date") +
     labs(y = "Dry Matter Yield (kg/ha)",
-         x = "Planting Date") +
+         x = "Planting Date",
+         title = "Yield x Planting Date by cycle length") +
     scale_y_continuous(labels = scales::comma,
                        breaks = seq(0, 30500, by = 3000)) +
     theme_bw() +
@@ -34,7 +36,7 @@ prob_plot = function(x, Pmonth){
                             label = T) %in% Pmonth) %>%
     mutate(PMonth = lubridate::month(PDate_norm, label = T)) %>%
     ggplot(aes(HWAD, fill = PMonth)) +
-    geom_density(color = "black") +
+    geom_density(color = "black", alpha = 0.5) +
     facet_wrap(~DAP, ncol = 1,
                labeller = labeller(DAP = c("240" = "8 Months",
                                            "270" = "9 Months",
@@ -42,7 +44,8 @@ prob_plot = function(x, Pmonth){
                                            "330" = "11 Months",
                                            "360" = "12 Months"))) +
     labs(y = "",
-         x = "Dry Matter Yield (kg/ha)") +
+         x = "Dry Matter Yield (kg/ha)",
+         title = "Yield Density by Planting Month") +
     scale_x_continuous(labels = scales::comma,
                        breaks = seq(0, 30500, by = 2000)) +
     scale_fill_manual(name = "Month",

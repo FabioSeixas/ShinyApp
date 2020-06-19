@@ -1,40 +1,43 @@
 source("server/implementation/yield.R")
+source("server/implementation/daily_plots.R")
 
 observeEvent(input$file, {
   shinyjs::show("yield_panel")
 })
 
-observeEvent(input$yield_sel_year, {
-  if(!is.null(input$yield_sel_year)){
-    shinyjs::show("PlotsContainer")}
-  else if(is.null(input$yield_sel_year)){
-    shinyjs::hide("PlotsContainer")
+observeEvent(input$daily_select_year, {
+  if(!is.null(input$daily_select_year)){
+    shinyjs::show(selector = "div.PlotsContainer")}
+  else if(is.null(input$daily_select_year)){
+    shinyjs::hide(selector = "div.PlotsContainer")
   }
 }, ignoreNULL = FALSE)
 
-yield_sel_year = reactive({
+
+
+daily_select_year = reactive({
   
-  req(input$yield_sel_year)
+  req(input$daily_select_year)
   
-  input$yield_sel_year
+  input$daily_select_year
   
 })
 
 df_yield = reactive({
   
   df() %>%
-    filter(Pyear %in% yield_sel_year()) %>%
+    filter(Pyear %in% daily_select_year()) %>%
     yield_new_columns()
   
 })
 
-output$yieldTable = renderTable({
-  
-  df() %>%
-    filter(Pyear %in% yield_sel_year()) %>%
-    yield_table()
-  
-})
+# output$yieldTable = renderTable({
+#   
+#   df() %>%
+#     filter(Pyear %in% daily_select_year()) %>%
+#     yield_table()
+#   
+# })
 
 output$yieldPlot = renderPlot({
   
@@ -44,13 +47,13 @@ output$yieldPlot = renderPlot({
     unique() -> valid_years
   
   validate(
-    need(yield_sel_year() %in% valid_years,
-         paste0("'", yield_sel_year(), "'",
+    need(daily_select_year() %in% valid_years,
+         paste0("'", daily_select_year(), "'",
                 " is not an available year for the current data"))
   )
   
   df_yield() %>%
-    yield_plot()
+    var_plot("yield", "Dry Matter Yield (kg/ha)")
   
 }, width = 800, height = 400)
 
@@ -58,6 +61,45 @@ output$yieldPlot = renderPlot({
 output$yieldWaterPlot = renderPlot({
   
   df_yield() %>%
-    yield_water_plot()
+    var_water_plot("yield", "Dry Matter Yield (kg/ha)")
+  
+}, width = 800, height = 400)
+
+
+output$yieldWaterPhotoPlot = renderPlot({
+  
+  df_yield() %>%
+    var_water_photo_plot("yield", "Dry Matter Yield (kg/ha)")
+  
+}, width = 800, height = 400)
+
+
+output$yieldWaterGrowthPlot = renderPlot({
+  
+  df_yield() %>%
+    var_water_growth_plot("yield", "Dry Matter Yield (kg/ha)")
+  
+}, width = 800, height = 400)
+
+output$yieldTempPhotoPlot = renderPlot({
+  
+  df_yield() %>%
+    var_temp_photo_plot("yield", "Dry Matter Yield (kg/ha)")
+  
+}, width = 800, height = 400)
+
+
+output$yieldTempGrowthPlot = renderPlot({
+  
+  df_yield() %>%
+    var_temp_growth_plot("yield", "Dry Matter Yield (kg/ha)")
+  
+}, width = 800, height = 400)
+
+
+output$assProdPlot = renderPlot({
+  
+  df_yield() %>%
+    ass_prod_plot()
   
 }, width = 800, height = 400)

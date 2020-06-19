@@ -2,8 +2,7 @@ source("server/implementation/general.R")
 
 
 observeEvent(input$file, {
-  shinyjs::show("general_panel")
-  shinyjs::show("general_panel2")
+  shinyjs::show(selector = "div.row")
 })
 
 output$general_plot = renderPlot({

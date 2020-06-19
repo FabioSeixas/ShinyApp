@@ -1,5 +1,5 @@
 
-options(shiny.maxRequestSize=30*1024^2)
+options(shiny.maxRequestSize=30*2024^2)
 
 server <- function(input, output) {
     
@@ -37,6 +37,10 @@ server <- function(input, output) {
     # ========== Yield Panel ======== #
     
     source("server/interface/yield.R", local = TRUE)
+    
+    # ========== Growth Panel ======== #
+    
+    source("server/interface/growth.R", local = TRUE)
     
 }
 

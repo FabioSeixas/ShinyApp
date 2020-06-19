@@ -1,37 +1,119 @@
 
-dailyGeneral = tabPanel("General", )
-
-dailyYield = tabPanel("Yield",
-                      
+yield = tabPanel("Yield",
                       br(),
-                      
                       hidden(
                         div(id = "yield_panel",
-                            div(
-                              selectizeInput("yield_sel_year",
-                                            "Select Year(s) (4 Max)",
-                                            1980:2020,
-                                            multiple = T,
-                                            options = list(maxItems = 4))),
                             br(),
-                          
-                            hidden(
-                              div(id = "PlotsContainer",
-                                  br(),
-                                  div(
-                                      h4("Final yield summarised over all cycles lengths"),
-                                      tableOutput("yieldTable")),
-                                  
-                                  br(),
-                                  
-                                  div(
-                                      h4("Yield over time"),
-                                      img(src="ajax-loader.gif", id = "plotSpinner"),
-                                      plotOutput("yieldPlot")),
-                                  
-                                  br(),
-                                  
-                                  div(
-                                      h4("Yield x Available Water"),
-                                      img(src="ajax-loader.gif", id = "plotSpinner"),
-                                      plotOutput("yieldWaterPlot")))))))
+                            tabsetPanel(type = "pills",
+                                        id = "plotParamsTabs",
+                                        tabPanel("Over Time",
+                                                 hidden(
+                                                   div(class = "PlotsContainer",
+                                                       br(),
+                                                  # div(h4("Final yield summarised over all cycles lengths"),
+                                                  #       tableOutput("yieldTable")),
+                                                  #     br(),
+                                                       div(class = "plot-container",
+                                                         h4("Yield over time"),
+                                                         div(class="img-container",
+                                                             img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                             plotOutput("yieldPlot")))))),
+                                        tabPanel("Yield and Water",
+                                                 hidden(
+                                                   div(class = "PlotsContainer",
+                                                            br(),
+                                                   div(class = "plot-container",
+                                                     h4("Yield x Available Water"),
+                                                     div(class="img-container",
+                                                     img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                     plotOutput("yieldWaterPlot"))),
+                                                   br(),
+                                                   
+                                                   div(class = "plot-container",
+                                                       h4("Yield x Water Factor for Photosynthesis"),
+                                                       div(class="img-container",
+                                                       img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                       plotOutput("yieldWaterPhotoPlot"))),
+                                                   br(),
+                                                   div(class = "plot-container",
+                                                       h4("Yield x Water Factor for Growth"),
+                                                       div(class="img-container",
+                                                       img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                       plotOutput("yieldWaterGrowthPlot")))))),
+                                        tabPanel("Yield and Temperature",
+                                                 hidden(div(class = "PlotsContainer",
+                                                            br(),
+                                                   div(class = "plot-container",
+                                                       h4("Yield x Temperature Factor for Photosynthesis"),
+                                                       div(class="img-container",
+                                                       img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                       plotOutput("yieldTempPhotoPlot"))),
+                                                   br(),
+                                                   div(class = "plot-container",
+                                                       h4("Yield x Temperature Factor for Growth"),
+                                                       div(class="img-container",
+                                                       img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                       plotOutput("yieldTempGrowthPlot")))))),
+                                        tabPanel("Assimilation",
+                                                 hidden(div(class = "PlotsContainer",
+                                                            br(),
+                                                            div(class = "plot-container",
+                                                                h4("Assimilate Production"),
+                                                                div(class="img-container",
+                                                                    img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                                    plotOutput("assProdPlot"))))))))))
+
+growth = tabPanel("Growth",
+                  br(),
+                  hidden(
+                    div(id = "growth_panel",
+                        br(),
+                        tabsetPanel(type = "pills",
+                                    id = "plotParamsTabs",
+                                    tabPanel("Canopy Weight",
+                                             hidden(
+                                               div(class = "PlotsContainer",
+                                                   br(),
+                                                   div(class = "plot-container",
+                                                       div(class="img-container",
+                                                           img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                           plotOutput("growthPlot")))))),
+                                    tabPanel("Canopy and Water",
+                                             hidden(
+                                               div(class = "PlotsContainer",
+                                                    br(),
+                                                    div(class = "plot-container",
+                                                        div(class = "img-container",
+                                                            img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                            plotOutput("growthWaterPlot"))),
+                                                   br(),
+                                                   div(class = "plot-container",
+                                                       div(class = "img-container",
+                                                           img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                           plotOutput("growthWaterPhotoPlot"))),
+                                                   br(),
+                                                   div(class = "plot-container",
+                                                       div(class = "img-container",
+                                                           img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                           plotOutput("growthWaterGrowthPlot")))))),
+                                    tabPanel("Canopy and Temperature",
+                                             hidden(
+                                               div(class = "PlotsContainer",
+                                                   br(),
+                                                   div(class = "plot-container",
+                                                       div(class = "img-container",
+                                                           img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                           plotOutput("growthTempPhotoPlot"))),
+                                                   br(),
+                                                   div(class = "plot-container",
+                                                       div(class = "img-container",
+                                                           img(src="ajax-loader.gif", id = "plotSpinner"),
+                                                           plotOutput("growthTempGrowthPlot"))))
+                                             ))))))
+                  
+                  
+
+evapo = tabPanel("Evapotranspiration",
+                 # EOAA x ETAA -> pot x avg evapotranspiration
+                 # EOPA x EPAA -> pot x avg transpiration
+                 )
