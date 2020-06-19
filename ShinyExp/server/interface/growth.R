@@ -46,45 +46,101 @@ output$growthPlot = renderPlot({
   )
   
   df_growth() %>%
-    var_plot("canopy", "Canopy Dry Matter (kg/ha)")
+    var_plot("canopy", 
+             "Canopy Dry Matter (kg/ha)",
+             "Canopy Weight over Time")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
 
 
 output$growthWaterPlot = renderPlot({
   
   df_growth() %>%
-    var_water_plot("canopy", "Canopy Dry Matter (kg/ha)")
+    var_water_plot("canopy", 
+                   "Canopy Dry Matter (kg/ha)",
+                   "Canopy x Extractable Water")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
 
 
 output$growthWaterPhotoPlot = renderPlot({
   
   df_growth() %>%
-    var_water_photo_plot("canopy", "Canopy Dry Matter (kg/ha)")
+    var_water_photo_plot("canopy", 
+                         "Canopy Dry Matter (kg/ha)",
+                         "Canopy x Water Factor for Photosynthesis")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
 
 
 output$growthWaterGrowthPlot = renderPlot({
   
   df_growth() %>%
-    var_water_growth_plot("canopy", "Canopy Dry Matter (kg/ha)")
+    var_water_growth_plot("canopy", 
+                          "Canopy Dry Matter (kg/ha)",
+                          "Canopy x Water Factor for Growth")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
+
+
+output$growthTempPlot = renderPlot({
+  
+  df_growth() %>%
+    var_temp_plot("canopy",
+                  "Canopy Dry Matter (kg/ha)",
+                  "Canopy x Temperature")
+  
+}, width = 800, height = 500)
+
 
 output$growthTempPhotoPlot = renderPlot({
   
   df_growth() %>%
-    var_temp_photo_plot("canopy", "Canopy Dry Matter (kg/ha)")
+    var_temp_photo_plot("canopy",
+                        "Canopy Dry Matter (kg/ha)",
+                        "Canopy x Temperature Factor for Photosynthesis")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
 
 
 output$growthTempGrowthPlot = renderPlot({
   
   df_growth() %>%
-    var_temp_growth_plot("canopy", "Canopy Dry Matter (kg/ha)")
+    var_temp_growth_plot("canopy", 
+                         "Canopy Dry Matter (kg/ha)",
+                         "Canopy x Temperature Factor for Growth")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
+
+
+output$LaiPlot = renderPlot({
+  
+  df_growth() %>%
+    var_plot("lai",
+             "Leaf Area Index",
+             "Leaf Area Index",
+             seq = seq(0, 10, 0.5))
+  
+}, width = 800, height = 500)
+
+
+output$assProdPlot = renderPlot({
+  
+  df_growth() %>%
+    var_plot("ass_prod",
+             "Assimilate Production (kg/ha/day)",
+             "Assimilate Production",
+             seq = seq(0, 30500, by = 25))
+  
+}, width = 800, height = 500)
+
+
+output$nodesPlot = renderPlot({
+  
+  df_growth() %>%
+    var_plot("nodes",
+             "Total Nodes number (Leafs + Scars)",
+             "Total Nodes number",
+             seq = seq(0, 30500, by = 50))
+  
+}, width = 800, height = 500)

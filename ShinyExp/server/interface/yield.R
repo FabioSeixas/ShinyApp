@@ -53,53 +53,79 @@ output$yieldPlot = renderPlot({
   )
   
   df_yield() %>%
-    var_plot("yield", "Dry Matter Yield (kg/ha)")
+    var_plot("yield", 
+             "Dry Matter Yield (kg/ha)",
+             "Yield over Time")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
 
 
 output$yieldWaterPlot = renderPlot({
   
   df_yield() %>%
-    var_water_plot("yield", "Dry Matter Yield (kg/ha)")
+    var_water_plot("yield", 
+                   "Dry Matter Yield (kg/ha)",
+                   "Yield x Extractable Water")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
 
 
 output$yieldWaterPhotoPlot = renderPlot({
   
   df_yield() %>%
-    var_water_photo_plot("yield", "Dry Matter Yield (kg/ha)")
+    var_water_photo_plot("yield", 
+                         "Dry Matter Yield (kg/ha)",
+                         "Yield x Water Factor for Photosynthesis")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
 
 
 output$yieldWaterGrowthPlot = renderPlot({
   
   df_yield() %>%
-    var_water_growth_plot("yield", "Dry Matter Yield (kg/ha)")
+    var_water_growth_plot("yield", 
+                          "Dry Matter Yield (kg/ha)",
+                          "Yield x Water Factor for Growth")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
+
+
+output$yieldTempPlot = renderPlot({
+  
+  df_yield() %>%
+    var_temp_plot("yield",
+                  "Dry Matter Yield (kg/ha)",
+                  "Yield x Temperature")
+  
+}, width = 800, height = 500)
+
 
 output$yieldTempPhotoPlot = renderPlot({
   
   df_yield() %>%
-    var_temp_photo_plot("yield", "Dry Matter Yield (kg/ha)")
+    var_temp_photo_plot("yield",
+                        "Dry Matter Yield (kg/ha)",
+                        "Yield x Temperature Factor for Photosynthesis")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
 
 
 output$yieldTempGrowthPlot = renderPlot({
   
   df_yield() %>%
-    var_temp_growth_plot("yield", "Dry Matter Yield (kg/ha)")
+    var_temp_growth_plot("yield", 
+                         "Dry Matter Yield (kg/ha)",
+                         "Yield x Temperature Factor for Growth")
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)
 
 
-output$assProdPlot = renderPlot({
+output$harvIndexPlot = renderPlot({
   
   df_yield() %>%
-    ass_prod_plot()
+    var_plot("harv_index",
+             "Harvest Index",
+             "Harvest Index",
+             seq = seq(0, 10, 0.25))
   
-}, width = 800, height = 400)
+}, width = 800, height = 500)

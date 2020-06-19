@@ -49,7 +49,7 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
                                             multiple = T,
                                             options = list(maxItems = 4))),
                          tabsetPanel(type = "pills",
-                                     id = "plotParamsTabs",
+                                     id = "dailyPlotParamsTabs",
                                      yield,
                                      growth,
                                      evapo))))))

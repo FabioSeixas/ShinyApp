@@ -67,7 +67,7 @@ h4 {
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 3px;
-  height: 500px;
+  height: 550px;
   padding: 20px;
 }
 
@@ -93,7 +93,7 @@ h4 {
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:hover,
 .nav-tabs>li.active>a:focus {
-  border-top: 2px solid orange;
+  border-top: 2px solid rgb(255,180,50);
   border-bottom: 0;
   font-weight: bold;
 }
@@ -127,15 +127,34 @@ h4 {
   background-color: white;
   border: 1px solid #ccc;
   border-bottom: 0;
-  border-top: 2px solid orange;
+  border-top: 2px solid rgb(255,180,50);
   padding-bottom: 10;
+}
+
+
+#dailyPlotParamsTabs.nav-pills>li>a {
+  border-radius: 20px; 
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  font-size: 1.2em;
+}
+
+#dailyPlotParamsTabs.nav>li>a {
+  padding: 5px 15px;
+} 
+
+#dailyPlotParamsTabs.nav-pills>li.active>a {
+  color: #222;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid black;
+  padding-bottom: 10;
+  border-radius: 20px;
 }
 
 #mainPlotContainer {
   position: relative;
 }
-
-
 
 #prob_plot {
   text-align: center;

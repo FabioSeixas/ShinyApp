@@ -7,16 +7,16 @@ growth_new_columns = function(x){
              PMonth = lubridate::month(PDate_norm,
                                        label = T),
              DATE) %>%
-    summarise(soil_water = mean(SWXD),
+    summarise(Tmean = mean(TMEAN),
+              soil_water = mean(SWXD),
               water_photo = mean(WFPD),
               water_grow = mean(WFGD),
               temp_photo = mean(TFPD),
               temp_grow = mean(TFGD),
               ass_prod = mean(AWAD),
-              nos = mean(`L#SD`),
+              nodes = mean(`L#SD`),
               lai = mean(LAID),
               canopy = mean(CWAD),
-              radiation = mean(SRAA),
-              harv_index = mean(HIAD))
+              radiation = mean(SRAA))
               
 }
