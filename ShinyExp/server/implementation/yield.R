@@ -13,7 +13,8 @@ yield_new_columns = function(x){
               water_grow = mean(WFGD),
               temp_photo = mean(TFPD),
               temp_grow = mean(TFGD),
-              harv_index = mean(HIAD))
+              harv_index = mean(HIAD),
+              radiation = mean(SRAA))
 }
 
 # 

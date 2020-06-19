@@ -20,3 +20,4 @@ growth_new_columns = function(x){
               radiation = mean(SRAA))
               
 }
+

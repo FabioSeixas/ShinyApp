@@ -113,6 +113,16 @@ output$growthTempGrowthPlot = renderPlot({
 }, width = 800, height = 500)
 
 
+output$growthRadPlot = renderPlot({
+  
+  df_growth() %>%
+    var_rad_plot("canopy",
+                 "Canopy Dry Matter (kg/ha)",
+                 "Canopy x Radiation")
+  
+}, width = 800, height = 500)
+
+
 output$LaiPlot = renderPlot({
   
   df_growth() %>%

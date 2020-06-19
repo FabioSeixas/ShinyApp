@@ -3,21 +3,16 @@ sumGeneral = tabPanel("General",
                       br(),
                       hidden(
                         fluidRow(id = "row-container",
-                          column(6,
+                          column(12,
                                  div(id = "result-container",
-                                     h4("Yield x Planting Date by cycle length"),
                                      img(src="ajax-loader.gif", id = "plotSpinner"),
-                                     plotOutput(outputId = "general_plot"))),
-                          column(6,
-                                 div(id = "result-container",
-                                     h4("Basic Statistics"),
-                                     tableOutput(outputId = "general_table")))),
+                                     plotOutput(outputId = "general_plot")))),
                         br(),
                          
                         fluidRow(id = "row-container",
                                  br(),
+                                 h4(strong("Yield Distribution by Month")),
                           column(6,
-                                 br(),
                                  hidden(
                                    div(id = "mainPlotContainer",
                                        img(src="ajax-loader.gif", id = "plotSpinner"),
@@ -32,9 +27,9 @@ sumGeneral = tabPanel("General",
                                                                              label = T)),
                                                multiple = T),
                                    br(),
-                                   p("Quantiles taken from all cycles lengths"),
-                                   tableOutput(outputId = "prob_table")),
-                                 br()))))
+                                   tableOutput(outputId = "prob_table"),
+                                   p(strong("OBS:"), "Quantiles taken from all cycles lengths"))),
+                                 br())))
 
 sumGermination = tabPanel("Germination",
                           

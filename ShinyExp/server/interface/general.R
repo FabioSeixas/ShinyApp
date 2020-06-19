@@ -10,7 +10,7 @@ output$general_plot = renderPlot({
   df() %>% 
     general_plot()
   
-}, width = 350, height = 400)
+}, width = 500, height = 500)
 
 
 output$general_table = renderTable({

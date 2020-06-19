@@ -23,7 +23,8 @@ general_plot = function(x){
     scale_y_continuous(labels = scales::comma,
                        breaks = seq(0, 30500, by = 3000)) +
     theme_bw() +
-    theme(legend.key.size = unit(15, unit = "mm"))
+    theme(legend.key.size = unit(15, unit = "mm"),
+          plot.title = element_text(hjust = 0.5, size = 15, face = "bold"))
 }
 
 
@@ -45,14 +46,16 @@ prob_plot = function(x, Pmonth){
                                            "360" = "12 Months"))) +
     labs(y = "",
          x = "Dry Matter Yield (kg/ha)",
-         title = "Yield Density by Planting Month") +
+         title = "Yield Frequency by cycle length") +
     scale_x_continuous(labels = scales::comma,
                        breaks = seq(0, 30500, by = 2000)) +
     scale_fill_manual(name = "Month",
                       values = RColorBrewer::brewer.pal(name = "Set1", 
                                                         n = length(Pmonth))) +
     theme_bw() +
-    theme(axis.text.y = element_blank())
+    theme(axis.text.y = element_blank(),
+          plot.title = element_text(hjust = 0.5, size = 15, face = "bold")) +
+    guides(color = guide_legend(override.aes = list(size = 4)))
 }
 
 

@@ -120,6 +120,15 @@ output$yieldTempGrowthPlot = renderPlot({
 }, width = 800, height = 500)
 
 
+output$yieldRadPlot = renderPlot({
+  
+  df_yield() %>%
+    var_rad_plot("yield", 
+                         "Dry Matter Yield (kg/ha)",
+                         "Yield x Radiation")
+  
+}, width = 800, height = 500)
+
 output$harvIndexPlot = renderPlot({
   
   df_yield() %>%
