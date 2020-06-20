@@ -35,7 +35,8 @@ var_plot = function(x, var, title_axis,
 }
 
 
-var_water_plot = function(x, var, title_axis, title) {
+var_water_plot = function(x, var, title_axis, title,
+                          seq = expr(seq(0, 30500, by = 2000))) {
   
   x %>% 
     ggplot(aes_string("DATE", var)) +
@@ -50,7 +51,7 @@ var_water_plot = function(x, var, title_axis, title) {
                  name = "Date") +
     scale_y_continuous(name = title_axis,
                        labels = scales::comma,
-                       breaks = seq(0, 30500, by = 2000),
+                       breaks = eval(seq),
                        sec.axis = sec_axis(~. / 50,
                                            name = expression(Soil~Extractable~Water~(mm)),
                                            breaks = seq(0, 1000, by = 50))) +

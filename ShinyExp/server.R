@@ -41,6 +41,10 @@ server <- function(input, output) {
     # ========== Growth Panel ======== #
     
     source("server/interface/growth.R", local = TRUE)
+
+    # ========== Evapotranspiration Panel ======== #
+    
+    source("server/interface/evapo.R", local = TRUE)
     
 }
 

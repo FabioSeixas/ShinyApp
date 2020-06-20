@@ -105,4 +105,25 @@ growth = tabPanel("Growth",
 evapo = tabPanel("Evapotranspiration",
                  # EOAA x ETAA -> pot x avg evapotranspiration
                  # EOPA x EPAA -> pot x avg transpiration
-                 )
+                 br(),
+                 hidden(
+                   div(id = "evapo_panel",
+                       br(),
+                       tabsetPanel(type = "pills",
+                                   id = "dailyPlotParamsTabs",
+                                   tabPanel("Evapotranspiration",
+                                            hidden(
+                                              div(class = "PlotsContainer",
+                                                  br(),
+                                                  set_plot_container("PotETOPlot"),
+                                                  br(),
+                                                  set_plot_container("AvgETOPlot")))),
+                                   tabPanel("Transpiration",
+                                            hidden(
+                                              div(class = "PlotsContainer",
+                                                  br(),
+                                                  set_plot_container("PotTranspPlot"),
+                                                  br(),
+                                                  set_plot_container("AvgTranspPlot"))))
+                       ))))
+                                            
