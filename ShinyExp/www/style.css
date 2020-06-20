@@ -59,6 +59,20 @@ h4 {
   margin-bottom: 20px;
 }
 
+#dailyInputs > .shiny-input-container {
+  padding: 10px 30px 10px 30px;
+  width: 380px;
+  max-width: 100%;
+}
+
+#dailyInputs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
 
 .plot-container {
   display: flex;

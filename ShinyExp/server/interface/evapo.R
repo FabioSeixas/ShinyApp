@@ -23,11 +23,31 @@ daily_select_year = reactive({
   
 })
 
+daily_select_month = reactive({
+  
+  req(input$daily_select_month)
+  
+  input$daily_select_month
+  
+})
+
 df_evapo = reactive({
   
   df() %>%
+    pull(PDate_norm) %>% 
+    lubridate::month(label = T) %>%
+    unique() -> valid_months
+  
+  validate(
+    need(daily_select_month() %in% valid_months,
+         paste0("'", daily_select_month(), "'",
+                " is not an available planting month for the current data"))
+  )
+  
+  df() %>%
     filter(Pyear %in% daily_select_year()) %>%
-    evapo_new_columns()
+    evapo_new_columns() %>%
+    filter(PMonth %in% daily_select_month())
   
 })
 
@@ -71,7 +91,8 @@ output$PotTranspPlot = renderPlot({
   df_evapo() %>%
     var_plot("pot_transp", 
              "Potential Transpiration (mm/day)",
-             "Potential Transpiration")
+             "Potential Transpiration",
+             seq = seq(0, 20, by = 1))
   
 }, width = 800, height = 500)
 
@@ -81,6 +102,7 @@ output$AvgTranspPlot = renderPlot({
   df_evapo() %>%
     var_plot("avg_transp", 
              "Average Transpiration (mm/day)",
-             "Average Transpiration")
+             "Average Transpiration",
+             seq = seq(0, 20, by = 1))
   
 }, width = 800, height = 500)

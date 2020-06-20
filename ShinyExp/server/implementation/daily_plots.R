@@ -177,7 +177,7 @@ var_temp_plot = function(x, var, title_axis, title) {
                        breaks = seq(0, 30500, by = 2000),
                        sec.axis = sec_axis(~. / 250,
                                            name = "Mean Temperature (Cº)",
-                                           breaks = seq(0, 50, by = 5))) +
+                                           breaks = seq(0, 100, by = 5))) +
     scale_color_manual(values = RColorBrewer::brewer.pal(name = "Set1", 
                                                          n = 8),
                        name = "Planting Month") +
@@ -301,7 +301,7 @@ var_rad_plot = function(x, var, title_axis, title) {
                        breaks = seq(0, 30500, by = 2000),
                        sec.axis = sec_axis(~. / 250,
                                            name = expression(Radiation~(MJ~m^{-2}~day^{-1})),
-                                           breaks = seq(0, 50, by = 5))) +
+                                           breaks = seq(0, 100, by = 10))) +
     scale_color_manual(values = RColorBrewer::brewer.pal(name = "Set1", 
                                                          n = 8),
                        name = "Planting Month") +

@@ -23,11 +23,31 @@ daily_select_year = reactive({
   
 })
 
+daily_select_month = reactive({
+  
+  req(input$daily_select_month)
+  
+  input$daily_select_month
+  
+})
+
 df_growth = reactive({
   
   df() %>%
+    pull(PDate_norm) %>% 
+    lubridate::month(label = T) %>%
+    unique() -> valid_months
+  
+  validate(
+    need(daily_select_month() %in% valid_months,
+         paste0("'", daily_select_month(), "'",
+                " is not an available planting month for the current data"))
+  )
+  
+  df() %>%
     filter(Pyear %in% daily_select_year()) %>%
-    growth_new_columns()
+    growth_new_columns() %>%
+    filter(PMonth %in% daily_select_month())
   
 })
 
