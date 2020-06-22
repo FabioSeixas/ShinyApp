@@ -26,7 +26,7 @@ make_norm_date = function(x){
   
 }
 
-# Não funcionando
+
 set_Pyear = function(date){
   
   if(lubridate::month(date) < 3){
@@ -47,36 +47,5 @@ new_column = function(x){
     select(PDate_norm, Pyear) %>%
     left_join(x, by = c("TRAT", "RUN"))
   
-}
-
-
-useful_treatments = function(df){
-  treatments = c()
-  
-  for(n in unique(df$TRNO)){
-  
-      if(filter(df, TRNO == n & cycle_m > 7 & cycle_m < 13) %>%
-       nrow() > 0){
-        
-      treatments = c(treatments, n)
-    }
-  }
-  return(treatments)
-}
-
-sim_start = function(df){
-  
-  if((mutate(df, 
-             diff = PDAT - SDAT) %>%
-      pull(diff) %>% 
-      sum()) == 0){
-    
-    return("Cumulative Precipitation since planting date")
-  }
-  else{
-    return(paste0("Cumulative Precipitation since simulation start (", 
-                      format(df$SDAT[1], "%b %d"),
-                      ")"))
-  }
 }
 

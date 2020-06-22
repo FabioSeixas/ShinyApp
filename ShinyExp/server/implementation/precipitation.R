@@ -54,6 +54,10 @@ mean_cum_prec = function(x){
          x = "Planting Date") +
     scale_y_continuous(labels = scales::comma,
                        breaks = seq(0, 3000, by = 300)) +
+    scale_x_date(labels = function(x) month(x, label = T, 
+                                            locale = "US"),
+                 date_breaks = "1 month",
+                 name = "Planting Date") +
     theme_bw()
   
 }
