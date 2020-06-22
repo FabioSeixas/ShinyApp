@@ -1,6 +1,6 @@
 source("server/implementation/irrigation.R")
 
-observeEvent(input$file, {
+observeEvent(input$readfile, {
   shinyjs::show("result-container")
 })
 

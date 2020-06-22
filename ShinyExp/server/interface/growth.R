@@ -1,7 +1,7 @@
 source("server/implementation/growth.R")
 source("server/implementation/daily_plots.R")
 
-observeEvent(input$file, {
+observeEvent(input$readfile, {
   shinyjs::show(id = "growth_panel")
 })
 

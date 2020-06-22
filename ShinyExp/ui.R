@@ -21,10 +21,24 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
     sidebarLayout(
         
         sidebarPanel(id = "inputPanel", width = 3,
+                     br(),
+        
+                         radioButtons("period",
+                         "Choose the Period",
+                         choices = c("Dry (Ago to Fev)", "Wet (Mar to Jul)"),
+                         selected = "Dry (Ago to Fev)"),
+            radioButtons("management",
+                         "Choose the Management",
+                         choices = c("Fully Irrigated", "Rainfed"),
+                         selected = "Fully Irrigated"),
+            radioButtons("soil",
+                         "Choose the Soil",
+                         choices = c("Default"),
+                         selected = "Default"),
+            actionButton("readfile",
+                         "Load",
+                         width = 100)
             
-            fileInput("file", "Choose CSV File",
-                      multiple = FALSE,
-                      accept = ".csv")
             
         ),
         

@@ -1,6 +1,6 @@
 source("server/implementation/precipitation.R")
 
-observeEvent(input$file, {
+observeEvent(input$readfile, {
   shinyjs::show(selector = "div.row")
 })
 

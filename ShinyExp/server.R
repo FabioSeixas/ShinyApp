@@ -5,9 +5,23 @@ server <- function(input, output) {
     
     df = reactive({
         
-        req(input$file)
+        req(input$readfile)
         
-        read_csv(input$file$datapath) %>%
+        dict = c("Dry (Ago to Fev)" = "D",
+                 "Wet (Mar to Jul)" = "W",
+                   "Fully Irrigated" = "I00",
+                   "Rainfed" = "R00",
+                   "Default" = "A")
+        
+        filename = paste0(dict[input$period],
+                          dict[input$management],
+                          dict[input$soil],
+                          ".csv")
+        path = here::here("data", filename)
+        
+        print(path)
+        
+        read_csv(path) %>%
             new_column()
         
     })

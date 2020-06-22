@@ -3,7 +3,7 @@ source("server/implementation/germination.R")$value
 
 # ======= Reactives ============= #
 
-observeEvent(input$file, {
+observeEvent(input$readfile, {
   shinyjs::show(selector = "div.row")
 })
 

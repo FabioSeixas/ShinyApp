@@ -1,7 +1,7 @@
 source("server/implementation/general.R")
 
 
-observeEvent(input$file, {
+observeEvent(input$readfile, {
   shinyjs::show(selector = "div.row")
 })
 
