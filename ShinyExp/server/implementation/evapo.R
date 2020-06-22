@@ -7,7 +7,8 @@ evapo_new_columns = function(x){
              PMonth = lubridate::month(PDate_norm,
                                        label = T),
              DATE) %>%
-    summarise(soil_water = mean(SWXD),
+    summarise(DAP = mean(DAP),
+              soil_water = mean(SWXD),
               pot_eto = mean(EOAA),
               avg_eto = mean(ETAA),
               pot_transp = mean(EOPA),

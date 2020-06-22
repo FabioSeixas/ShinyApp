@@ -51,14 +51,6 @@ df_yield = reactive({
   
 })
 
-# output$yieldTable = renderTable({
-#   
-#   df() %>%
-#     filter(Pyear %in% daily_select_year()) %>%
-#     yield_table()
-#   
-# })
-
 output$yieldPlot = renderPlot({
   
   df() %>%

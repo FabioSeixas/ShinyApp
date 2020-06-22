@@ -2,6 +2,7 @@ var_plot = function(x, var, title_axis,
                     title, seq = expr(seq(0, 30500, by = 2000))) {
   
   x %>%
+    filter(DAP < 366) %>%
     ggplot(aes_string("DATE", var)) +
     geom_line(aes(color = PMonth)) +
     facet_wrap(~Pyear, ncol = 2,
@@ -39,6 +40,7 @@ var_water_plot = function(x, var, title_axis, title,
                           seq = expr(seq(0, 30500, by = 2000))) {
   
   x %>% 
+    filter(DAP < 366) %>%
     ggplot(aes_string("DATE", var)) +
     geom_line(aes(color = PMonth)) +
     geom_line(aes(DATE, soil_water * 50, group = PMonth), 
@@ -80,6 +82,7 @@ var_water_plot = function(x, var, title_axis, title,
 var_water_photo_plot = function(x, var, title_axis, title) {
   
   x %>% 
+    filter(DAP < 366) %>%
     ggplot(aes_string("DATE", var)) +
     geom_line(aes(color = PMonth)) +
     geom_line(aes(DATE, water_photo * 10000, group = PMonth), 
@@ -121,6 +124,7 @@ var_water_photo_plot = function(x, var, title_axis, title) {
 var_water_growth_plot = function(x, var, title_axis, title) {
   
   x %>% 
+    filter(DAP < 366) %>%
     ggplot(aes_string("DATE", var)) +
     geom_line(aes(color = PMonth)) +
     geom_line(aes(DATE, water_grow * 10000, group = PMonth), 
@@ -162,6 +166,7 @@ var_water_growth_plot = function(x, var, title_axis, title) {
 var_temp_plot = function(x, var, title_axis, title) {
   
   x %>% 
+    filter(DAP < 366) %>%
     ggplot(aes_string("DATE", var)) +
     geom_line(aes(color = PMonth)) +
     geom_line(aes(DATE, Tmean * 250, group = PMonth), 
@@ -203,6 +208,7 @@ var_temp_plot = function(x, var, title_axis, title) {
 var_temp_photo_plot = function(x, var, title_axis, title) {
   
   x %>% 
+    filter(DAP < 366) %>%
     ggplot(aes_string("DATE", var)) +
     geom_line(aes(color = PMonth)) +
     geom_line(aes(DATE, temp_photo * 10000, group = PMonth), 
@@ -244,6 +250,7 @@ var_temp_photo_plot = function(x, var, title_axis, title) {
 var_temp_growth_plot = function(x, var, title_axis, title) {
   
   x %>% 
+    filter(DAP < 366) %>%
     ggplot(aes_string("DATE", var)) +
     geom_line(aes(color = PMonth)) +
     geom_line(aes(DATE, temp_grow * 10000, group = PMonth), 
@@ -285,7 +292,8 @@ var_temp_growth_plot = function(x, var, title_axis, title) {
 
 var_rad_plot = function(x, var, title_axis, title) {
   
-  x %>% 
+  x %>%
+    filter(DAP < 366) %>%
     ggplot(aes_string("DATE", var)) +
     geom_line(aes(color = PMonth)) +
     geom_line(aes(DATE, radiation * 250, group = PMonth), 
