@@ -42,6 +42,10 @@ server <- function(input, output) {
     
     source("server/interface/irrigation.R", local = TRUE)
     
+    # ============= Economic Panel ============ #
+    
+    source("server/interface/economic.R", local = TRUE)
+    
     
     
     # Daily Outputs

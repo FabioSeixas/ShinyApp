@@ -96,9 +96,17 @@ sumPrecipitation = tabPanel("Precipitation",
 sumIrrigation = tabPanel("Irrigation",
                          
                          br(),
-                         #hidden(
-                           div(id = "result-container",
-                               h4("Yield x Irrigation"),
+                         hidden(
+                           div(class = "result-container",
                                img(src="ajax-loader.gif", id = "plotSpinner"),
                                plotOutput("plot5")
-                           ))
+                           )))
+
+sumEconomic = tabPanel("Economic",
+                       br(),
+                       hidden(
+                         div(class = "result-container",
+                             img(src="ajax-loader.gif", id = "plotSpinner"),
+                             plotOutput("plot6"))
+                       ))
+                      
