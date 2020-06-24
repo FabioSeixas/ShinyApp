@@ -17,9 +17,6 @@ yield = tabPanel("Yield",
                                                  hidden(
                                                    div(class = "PlotsContainer",
                                                        br(),
-                                                  # div(h4("Final yield summarised over all cycles lengths"),
-                                                  #       tableOutput("yieldTable")),
-                                                  #     br(),
                                                        set_plot_container("yieldPlot")))),
                                         tabPanel("Yield and Water",
                                                  hidden(

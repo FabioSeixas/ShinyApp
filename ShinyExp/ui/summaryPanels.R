@@ -94,10 +94,9 @@ sumPrecipitation = tabPanel("Precipitation",
                               br()))
 
 sumIrrigation = tabPanel("Irrigation",
-                         
                          br(),
                          hidden(
-                           div(class = "result-container",
+                           div(class = "plot-container sum",
                                img(src="ajax-loader.gif", id = "plotSpinner"),
                                plotOutput("plot5")
                            )))
@@ -105,8 +104,42 @@ sumIrrigation = tabPanel("Irrigation",
 sumEconomic = tabPanel("Economic",
                        br(),
                        hidden(
-                         div(class = "result-container",
-                             img(src="ajax-loader.gif", id = "plotSpinner"),
-                             plotOutput("plot6"))
-                       ))
+                         fluidRow(column(6,
+                                         div(class = "plot-container sum",
+                                             img(src="ajax-loader.gif", id = "plotSpinner"),
+                                             plotOutput("grossMarginPlot"))),
+                                  column(6,
+                                         div(class = "plot-container sum",
+                                             img(src="ajax-loader.gif", id = "plotSpinner"),
+                                             plotOutput("econRelationPlot")))),
+                         br(),
+                         fluidRow(column(8,
+                                         div(class = "plot-container sum", id = "econResults", 
+                                             img(src="ajax-loader.gif", id = "plotSpinner"),
+                                             plotOutput("econResultsPlot"))),
+                                  column(4,
+                                         div(class = "text-results",
+                                             br(),
+                                             h5("Yield Threshold to ensure a Positive Result"),
+                                             verbatimTextOutput("yieldThreshold"),
+                                             br(),
+                                             h5("Simulations above the Threshold"),
+                                             verbatimTextOutput("econPercent")))),
+                         br(),
+                         fluidRow(column(8,
+                                         div(class = "plot-container sum",
+                                             img(src="ajax-loader.gif", id = "plotSpinner"),
+                                             plotOutput("econSecurityPlot"))),
+                                  column(4,
+                                         div(class = "text-results",
+                                             br(),
+                                             h5("Security Margins equal or above 10%"),
+                                             verbatimTextOutput("econSecurityText10"),
+                                             br(),
+                                             h5("Security Margins equal or above 30%"),
+                                             verbatimTextOutput("econSecurityText30"),
+                                             br(),
+                                             h5("Security Margins equal or above 50%"),
+                                             verbatimTextOutput("econSecurityText50"))))
+                         ))
                       

@@ -86,6 +86,32 @@ h4 {
   padding: 20px;
 }
 
+.plot-container.sum {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border: 0px solid #ccc;
+  border-radius: 0px;
+  height: 550px;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+#econResults {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border: 0px solid #ccc;
+  border-radius: 0px;
+  height: 450px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
 .img-container {
   position: relative;
 }

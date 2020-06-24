@@ -3,9 +3,7 @@ options(shiny.maxRequestSize=30*2024^2)
 
 server <- function(input, output) {
     
-    df = reactive({
-        
-        req(input$readfile)
+    df = eventReactive(input$readfile, {
         
         dict = c("Dry (Ago to Fev)" = "D",
                  "Wet (Mar to Jul)" = "W",

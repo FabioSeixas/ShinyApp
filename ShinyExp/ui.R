@@ -20,7 +20,7 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
     
     sidebarLayout(
         
-        sidebarPanel(id = "inputPanel", width = 3,
+        sidebarPanel(id = "inputPanel", width = 2,
                      br(),
         
                          radioButtons("period",
@@ -42,7 +42,7 @@ ui <- fluidPage(theme = shinytheme("sandstone"),
             
         ),
         
-        mainPanel(
+        mainPanel(width = 9,
             
             tabsetPanel(type = "pills",
                         id = "plotParamsTabs",
