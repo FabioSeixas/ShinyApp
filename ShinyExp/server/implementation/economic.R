@@ -28,7 +28,9 @@ economic_columns = function(x) {
   x %>%
   ungroup() %>%
   filter(DAP %in% c(240, 270, 300, 330, 360)) %>% 
-  mutate(yield_FW = HWAD / dry_to_fresh_matter_factor,
+  mutate(PMonth = lubridate::month(PDate_norm,
+                                   label = T),
+         yield_FW = HWAD / dry_to_fresh_matter_factor,
          yield_FW_ton = yield_FW / 1000,
          receita_ha = yield_FW_ton * ton_sell_price,
          custo_basico = sum(basic_costs) * (1 + other_costs_percent),
@@ -43,10 +45,10 @@ economic_columns = function(x) {
 }
 
 
-security_columns = function(x) {
+security_columns = function(x, threshold) {
   
   x %>%
-    mutate(acima_seguranca = yield_FW_ton - 18,
+    mutate(acima_seguranca = yield_FW_ton - threshold,
            margem_seguranca = map2_dbl(acima_seguranca, yield_FW_ton,
                                        function(.x, .y){
                                          if(.x >= 0){
@@ -59,7 +61,7 @@ security_columns = function(x) {
 
 security_percent_above = function(x, threshold) {
   
-  sum(x$margem_seguranca >= threshold) / sum(x$resultado > 0) * 100 -> value
+  (sum(x$margem_seguranca >= threshold) / sum(x$resultado > 0)) * 100 -> value
   
   return(sym(paste(round(value, 2), "%")))
   
