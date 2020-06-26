@@ -7,8 +7,7 @@ var_plot = function(x, var, title_axis,
     geom_line(aes(color = PMonth)) +
     facet_wrap(~Pyear, ncol = 2,
                scales = "free_x") +
-    scale_x_date(labels = function(x) month(x, label = T, 
-                                            locale = "US"),
+    scale_x_date(labels = function(x) month(x, label = T),
                  date_breaks = "2 month",
                  name = "Date") +
     scale_y_continuous(name = title_axis,
@@ -47,8 +46,7 @@ var_water_plot = function(x, var, title_axis, title,
               color = "blue", alpha = 0.2) +
     facet_wrap(~Pyear, ncol = 2,
                scales = "free_x") +
-    scale_x_date(labels = function(x) month(x, label = T, 
-                                            locale = "US"),
+    scale_x_date(labels = function(x) month(x, label = T),
                  date_breaks = "2 month",
                  name = "Date") +
     scale_y_continuous(name = title_axis,
@@ -89,8 +87,7 @@ var_water_photo_plot = function(x, var, title_axis, title) {
               color = "blue", alpha = 0.2) +
     facet_wrap(~Pyear, ncol = 2,
                scales = "free_x") +
-    scale_x_date(labels = function(x) month(x, label = T, 
-                                            locale = "US"),
+    scale_x_date(labels = function(x) month(x, label = T),
                  date_breaks = "2 month",
                  name = "Date") +
     scale_y_continuous(name = title_axis,
@@ -131,8 +128,7 @@ var_water_growth_plot = function(x, var, title_axis, title) {
               color = "blue", alpha = 0.2) +
     facet_wrap(~Pyear, ncol = 2,
                scales = "free_x") +
-    scale_x_date(labels = function(x) month(x, label = T, 
-                                            locale = "US"),
+    scale_x_date(labels = function(x) month(x, label = T),
                  date_breaks = "2 month",
                  name = "Date") +
     scale_y_continuous(name = title_axis,
@@ -173,8 +169,7 @@ var_temp_plot = function(x, var, title_axis, title) {
               color = "blue", alpha = 0.2) +
     facet_wrap(~Pyear, ncol = 2,
                scales = "free_x") +
-    scale_x_date(labels = function(x) month(x, label = T, 
-                                            locale = "US"),
+    scale_x_date(labels = function(x) month(x, label = T),
                  date_breaks = "2 month",
                  name = "Date") +
     scale_y_continuous(name = title_axis,
@@ -215,8 +210,7 @@ var_temp_photo_plot = function(x, var, title_axis, title) {
               color = "blue", alpha = 0.2) +
     facet_wrap(~Pyear, ncol = 2,
                scales = "free_x") +
-    scale_x_date(labels = function(x) month(x, label = T, 
-                                            locale = "US"),
+    scale_x_date(labels = function(x) month(x, label = T),
                  date_breaks = "2 month",
                  name = "Date") +
     scale_y_continuous(name = title_axis,
@@ -257,8 +251,7 @@ var_temp_growth_plot = function(x, var, title_axis, title) {
               color = "blue", alpha = 0.2) +
     facet_wrap(~Pyear, ncol = 2,
                scales = "free_x") +
-    scale_x_date(labels = function(x) month(x, label = T, 
-                                            locale = "US"),
+    scale_x_date(labels = function(x) month(x, label = T),
                  date_breaks = "2 month",
                  name = "Date") +
     scale_y_continuous(name = title_axis,
@@ -300,8 +293,7 @@ var_rad_plot = function(x, var, title_axis, title) {
               color = "blue", alpha = 0.2) +
     facet_wrap(~Pyear, ncol = 2,
                scales = "free_x") +
-    scale_x_date(labels = function(x) month(x, label = T, 
-                                            locale = "US"),
+    scale_x_date(labels = function(x) month(x, label = T),
                  date_breaks = "2 month",
                  name = "Date") +
     scale_y_continuous(name = title_axis,

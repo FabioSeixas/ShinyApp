@@ -79,8 +79,7 @@ gross_margin_plot = function(x) {
                                            "330" = "11 Months",
                                            "360" = "12 Months"))) +
     scale_y_continuous(labels = scales::comma) +
-    scale_x_date(labels = function(x) month(x, label = T, 
-                                            locale = "US"),
+    scale_x_date(labels = function(x) month(x, label = T),
                  date_breaks = "1 month",
                  name = "Planting Date") +
     labs(title = "Gross Margin by cicle length",
@@ -104,8 +103,7 @@ margin_costs_rel_plot = function(x) {
                                            "300" = "10 Months",
                                            "330" = "11 Months",
                                            "360" = "12 Months"))) +
-    scale_x_date(labels = function(x) month(x, label = T, 
-                                            locale = "US"),
+    scale_x_date(labels = function(x) month(x, label = T),
                  date_breaks = "1 month",
                  name = "Planting Date") +
     labs(title = "Margin-Costs relation by cicle length",

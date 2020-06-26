@@ -15,7 +15,9 @@ server <- function(input, output) {
                           dict[input$management],
                           dict[input$soil],
                           ".csv")
-        path = here::here("data", filename)
+        
+        path = here::here("data",
+                          filename)
         
         read_csv(path) %>%
             new_column()

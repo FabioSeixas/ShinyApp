@@ -13,8 +13,7 @@ general_plot = function(x){
                                            "300" = "10 Months",
                                            "330" = "11 Months",
                                            "360" = "12 Months"))) +
-    scale_x_date(labels = function(x) month(x, label = T, 
-                                            locale = "US"),
+    scale_x_date(labels = function(x) month(x, label = T),
                  date_breaks = "1 month",
                  name = "Planting Date") +
     labs(y = "Dry Matter Yield (kg/ha)",
