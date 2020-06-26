@@ -1,24 +1,24 @@
 
-## Shiny App to automate simulation results analysis
+## Shiny App to facilitate simulation results analysis
 
-Under development. See below some app screenshots.
+That App is under development until the research is finished.
+
+You can check the first online version: [shinyapps.io](https://cassava.shinyapps.io/shinyexp/)
+
+<br>
+
+### Research aim
+
+Identify irrigation managements levels that makes out-of-season planting dates interesting for cassava farmers.
 
 -------------------------------------------
 
-<h1 align="center">
-    <img src="github/Imagem1.jpg" width="600px"/>
-</h1>
+<br>
 
+### Shiny Resources:
 
-<h1 align="center">
-    <img src="github/Imagem2.jpg" width="600px"/>
-</h1>
+[Mastering Shiny](https://mastering-shiny.org/)
 
+[Engineering Shiny](https://engineering-shiny.org/)
 
-<h1 align="center">
-    <img src="github/Imagem3.jpg" width="400px"/>
-</h1>
-
-<h1 align="center">
-    <img src="github/Imagem4.jpg" width="400px"/>
-</h1>
+[Supplement to Shiny in Production Workshop](https://kellobri.github.io/shiny-prod-book/index.html)
