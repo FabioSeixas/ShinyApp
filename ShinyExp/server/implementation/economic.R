@@ -2,7 +2,7 @@
 
 # Specifications
 dry_to_fresh_matter_factor = 0.4
-ton_sell_price = 200
+ton_sell_price = 320
 
 basic_costs = c("Manivas" = 137,
                 "Ureia" = 115,
@@ -12,16 +12,28 @@ basic_costs = c("Manivas" = 137,
                 "Aração" = 171,
                 "Gradagem" = 86,
                 "Sulcamento" = 115,
-                "Aplicação Fertilizantes" = 92,
-                "Transporte Manivas" = 46,
-                "Seleção e preparo manivas" = 69,
-                "Plantio" = 69,
-                "Capinas (4)" = 1096,
-                "Aplicação formicida" = 69,
-                "Colheita" = 571)
+                "Aplicação Fertilizantes" = 200,
+                "Transporte Manivas" = 100,
+                "Seleção e preparo manivas" = 150,
+                "Plantio" = 150,
+                "Capinas (4)" = 2400,
+                "Aplicação formicida" = 150,
+                "Colheita" = 1250)
 
-other_costs_percent = 0.12
+other_costs_percent = 0.2
 
+irrig_invest = 7446
+irrig_fixos = c("Depr" = 670)
+
+irrig_variaveis = function(lamina){
+  lamina = lamina / 0.8
+  variaveis = c("bombeamento" = lamina * 2.28,
+                "água" = lamina * 1,
+                "irrigante" = lamina * 2) %>%
+    sum()
+  
+  return(variaveis + (variaveis * 0.5 + 75))
+}
 
 economic_columns = function(x) {
   
@@ -34,9 +46,10 @@ economic_columns = function(x) {
          yield_FW_ton = yield_FW / 1000,
          receita_ha = yield_FW_ton * ton_sell_price,
          custo_basico = sum(basic_costs) * (1 + other_costs_percent),
-         custo_irrig = IRRC * 100,
-         custo_ha = custo_basico + custo_irrig,
-         custo_ton = custo_ha / yield_FW_ton,
+         custo_irrig_invest = irrig_invest,
+         custo_irrig_fixo = sum(irrig_fixos),
+         custo_irrig_var = map_dbl(IRRC, irrig_variaveis),
+         custo_ha = custo_basico + custo_irrig_fixo + custo_irrig_var,
          margem_bruta = receita_ha - custo_ha,
          relacao = receita_ha / custo_ha,
          resultado = map_int(margem_bruta, 
@@ -122,11 +135,12 @@ econ_results_plot = function(x) {
     ggplot(aes(yield_FW_ton, 
                group = as.factor(resultado), 
                fill = as.factor(resultado))) +
-    geom_density(size = 0.7, alpha = 0.5) +
+    geom_histogram(size = 0.7, alpha = 0.5) +
     scale_fill_manual(name='Financial Result', 
                       values=c("1" = "green3", "0" = "red3"),
                       labels = c("Negative", "Positive")) +
     scale_x_continuous(name = "Yield (ton/ha)") +
+    labs(subtitle = "First year not included") +
     theme_bw() +
     theme(axis.text.y = element_blank(),
           axis.title.y = element_blank(),

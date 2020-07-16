@@ -79,9 +79,10 @@ df_econ_filtered = reactive({
 yieldThreshold = reactive({
   
   df_econ_filtered() %>%
-    filter(margem_bruta > 0) %>%
-    pull(yield_FW_ton) %>%
-    min()
+    pull(custo_ha) %>%
+    mean() -> custo_ha
+  
+  round(custo_ha / 320, 1)
   
 })
 
@@ -94,6 +95,12 @@ output$econResultsPlot = renderPlot({
 }, width = 500, height = 400)
 
 
+output$yieldThresholdFirst = renderPrint({
+  
+  # R$ 7446 / 320 (R$/ton) = 23.26
+  sym(paste(yieldThreshold() + 23.26, "ton/ha"))
+  
+})
 
 output$yieldThreshold = renderPrint({
   

@@ -7,7 +7,9 @@ server <- function(input, output) {
         
         dict = c("Dry (Ago to Fev)" = "D",
                  "Wet (Mar to Jul)" = "W",
-                 "Fully Irrigated" = "I00",
+                 "Irrigated auto" = "I00",
+                 "Irrigated > 100" = "I01",
+                 "Irrigated = 80" = "I02",
                  "Rainfed" = "R00",
                  "Default" = "A")
         
