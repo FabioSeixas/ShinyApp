@@ -7,10 +7,12 @@ server <- function(input, output) {
         
         dict = c("Dry (Ago to Fev)" = "D",
                  "Wet (Mar to Jul)" = "W",
-                 "Irrigated auto" = "I00",
-                 "Irrigated > 100" = "I01",
-                 "Irrigated = 80" = "I02",
-                 "Rainfed" = "R00",
+                 "Irrigated the entire cycle" = "0",
+                 "80%" = "80",
+                 "60%" = "60",
+                 "40%" = "40",
+                 "100%" = "100",
+                 "Rainfed" = "R",
                  "Default" = "A")
         
         filename = paste0(dict[input$period],

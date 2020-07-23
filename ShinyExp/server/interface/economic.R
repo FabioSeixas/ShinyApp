@@ -17,6 +17,25 @@ df_economic = reactive({
   
 })
 
+### Water Applied and Efficiency
+
+output$waterAppliedPlot = renderPlot({
+  
+  df_economic() %>%
+    water_applied_plot()
+  
+}, width = 350, height = 500)
+
+output$waterEficPlot = renderPlot({
+  
+  df_economic() %>%
+    water_efic_plot()
+  
+}, width = 350, height = 500)
+
+
+### Gross Margins and Cost-Benefit Relation
+
 output$grossMarginPlot = renderPlot({
   
   df_economic() %>%
@@ -33,6 +52,7 @@ output$econRelationPlot = renderPlot({
 }, width = 350, height = 500)
 
 
+# Inputs for specific Planting Months and Cycle Lengths
 
 econ_select_month = reactive({
   
@@ -62,7 +82,7 @@ df_econ_filtered = reactive({
     pull(PDate_norm) %>% 
     lubridate::month(label = T) %>%
     unique() -> valid_months
-  
+ 
   validate(
     need(econ_select_month() %in% valid_months,
          paste0("'", econ_select_month(), "'",
@@ -76,15 +96,13 @@ df_econ_filtered = reactive({
   
 })
 
-yieldThreshold = reactive({
+
+output$econCostsPlot = renderPlot({
   
   df_econ_filtered() %>%
-    pull(custo_ha) %>%
-    mean() -> custo_ha
+    econ_costs_plot()
   
-  round(custo_ha / 320, 1)
-  
-})
+}, width = 500, height = 400)
 
 
 output$econResultsPlot = renderPlot({
@@ -95,19 +113,6 @@ output$econResultsPlot = renderPlot({
 }, width = 500, height = 400)
 
 
-output$yieldThresholdFirst = renderPrint({
-  
-  # R$ 7446 / 320 (R$/ton) = 23.26
-  sym(paste(yieldThreshold() + 23.26, "ton/ha"))
-  
-})
-
-output$yieldThreshold = renderPrint({
-  
-  sym(paste(yieldThreshold(), "ton/ha"))
-  
-})
-
 output$econPercent = renderPrint({
   
   (sum(df_econ_filtered()$resultado) / nrow(df_econ_filtered())) * 100 -> value
@@ -117,43 +122,10 @@ output$econPercent = renderPrint({
 })
 
 
-df_econ_security = reactive({
-  
-  df_econ_filtered() %>%
-    security_columns(yieldThreshold())
-  
-})
-
-
 output$econSecurityPlot = renderPlot({
   
-  df_econ_security() %>%
-    econ_security_plot()
+  df_econ_filtered() %>%
+    security_plot()
   
 }, width = 500, height = 400)
-
-
-output$econSecurityText10 = renderPrint({
-  
-  df_econ_security() %>%
-    security_percent_above(0.1)
-  
-})
-
-
-output$econSecurityText30 = renderPrint({
-  
-  df_econ_security() %>%
-    security_percent_above(0.3)
-  
-})
-
-
-output$econSecurityText50 = renderPrint({
-  
-  df_econ_security() %>%
-    security_percent_above(0.5)
-  
-})
-
 
